@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Button to trigger the getAnimal function -->
+    <button onclick="getAnimal()">Get Animal Data</button>
+    
+    <!-- Container to display fetched data -->
+    <div id="container"></div>
+    
+    <script>
+        function getAnimal() {
+            // Fetch data from the API endpoint
+            fetch("https://fakerapi.it/api/v1/persons")
+            .then(async function(response) {
+                // Parse the JSON response asynchronously
+                const jsonData = await response.json();
+                
+                // Update the container element's inner HTML with the JSON data as a string
+                document.getElementById("container").innerHTML = JSON.stringify(jsonData);
+            })
+            .catch(function(error) {
+                // Log any errors that occur during the fetch operation
+                console.log(error);
+            });
+        }
+    </script>
+</body>
+</html>
